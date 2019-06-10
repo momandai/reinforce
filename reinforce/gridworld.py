@@ -170,7 +170,7 @@ class GridWorldEnv(gym.Env):
         self.rewards= []        # 特殊奖励的格子在此设置，终止格子奖励0
         self.refresh_setting()
         self.viewer = None      # 图形接口对象
-        self._seed()    # 产生一个随机子
+        self.seed()    # 产生一个随机子
         self.reset()
 
     def _adjust_size(self):
@@ -179,12 +179,12 @@ class GridWorldEnv(gym.Env):
         pass
 
 
-    def _seed(self, seed=None):
+    def seed(self, seed=None):
         # 产生一个随机化时需要的种子，同时返回一个np_random对象，支持后续的随机化生成操作
         self.np_random, seed = seeding.np_random(seed)  
         return [seed]
 
-    def _step(self, action):
+    def step(self, action):
         assert self.action_space.contains(action), \
             "%r (%s) invalid" % (action, type(action))
         
@@ -251,7 +251,7 @@ class GridWorldEnv(gym.Env):
         for x,y,t in self.types:
             self.grids.set_type(x,y,t)
 
-    def _reset(self):
+    def reset(self):
         self.state = self._xy_to_state(self.start)
         return self.state   
 
@@ -270,7 +270,7 @@ class GridWorldEnv(gym.Env):
         return False
 
     # 图形化界面
-    def _render(self, mode='human', close=False):
+    def render(self, mode='human', close=False):
         if close:
             if self.viewer is not None:
                 self.viewer.close()

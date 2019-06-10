@@ -114,7 +114,7 @@ class SarsaAgent(Agent):
 
 def main():
     env = WindyGridWorld()
-    agent = SarsaAgent(env, capacity = 2000)
+    agent = SarsaAgent(env, capacity = 20000)
     print("Learning...")  
     agent.sarsaLearning(gamma=0.9, 
                         alpha=0.1, 
