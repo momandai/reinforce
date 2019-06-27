@@ -37,6 +37,8 @@ class SarsaLambdaAgent():
         if not self._is_state_in_Q(s):
             self._init_state_value(s, randomized)
 
+    def _asser
+
     def _get_Q(self, s, a):
         self._assert_state_in_Q(s, randomized=True)
         return self.Q[s][a]
